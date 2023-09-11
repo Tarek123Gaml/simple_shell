@@ -137,5 +137,11 @@ char *_strcpy(char *s, char *s1);
 char *_strdup(const char *s);
 void _puts(char *str);
 int _putchar(char c);
+int _atoi(char *s);
+int _isalpha(int c);
+int is_delim(char c, char *delim);
+int interactive(info_t *info);
+_erratoi(char *s);
+
 
 #endif
