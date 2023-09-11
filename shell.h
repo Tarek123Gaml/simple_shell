@@ -137,11 +137,19 @@ char *_strcpy(char *s, char *s1);
 char *_strdup(const char *s);
 void _puts(char *str);
 int _putchar(char c);
+
+/**other functions**/
+
 int _atoi(char *s);
 int _isalpha(int c);
 int is_delim(char c, char *delim);
 int interactive(info_t *info);
-_erratoi(char *s);
+char convert_number(long int num, int base, int flage);
+int _erratoi(char *s);
+int _erratoi(char *s);
+void print_error(info_t *info, char *estr);
+int print_d(int input, int fd);
+void remove_comments(char *buf);
 
 
 #endif
