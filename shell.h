@@ -18,21 +18,21 @@
 #define BUF_FLUSH -1
 
 /* for command chaining */
-#define CMD_NORM	0
-#define CMD_OR		1
-#define CMD_AND		2
-#define CMD_CHAIN	3
+#define CMD_NORM        0
+#define CMD_OR          1
+#define CMD_AND         2
+#define CMD_CHAIN       3
 
 /* for convert_number() */
-#define CONVERT_LOWERCASE	1
-#define CONVERT_UNSIGNED	2
+#define CONVERT_LOWERCASE       1
+#define CONVERT_UNSIGNED        2
 
 /* 1 if using system getline() */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define HIST_FILE	".simple_shell_history"
-#define HIST_MAX	4096
+#define HIST_FILE       ".simple_shell_history"
+#define HIST_MAX        4096
 
 extern char **environ;
 
@@ -45,14 +45,14 @@ extern char **environ;
  */
 typedef struct liststr
 {
-	int num;
-	char *str;
-	struct liststr *next;
+        int num;
+        char *str;
+        struct liststr *next;
 } list_t;
 
 /**
  *struct passinfo - contains pseudo-arguements to pass into a function,
- *					allowing uniform prototype for function pointer struct
+ *allowing uniform prototype for function pointer struct
  *@arg: a string generated from getline containing arguements
  *@argv: an array of strings generated from arg
  *@path: a string path for the current command
@@ -74,30 +74,30 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-	char *arg;
-	char **argv;
-	char *path;
-	int argc;
-	unsigned int line_count;
-	int err_num;
-	int linecount_flag;
-	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
-	char **environ;
-	int env_changed;
-	int status;
+        char *arg;
+        char **argv;
+        char *path;
+        int argc;
+        unsigned int line_count;
+        int err_num;
+        int linecount_flag;
+        char *fname;
+        list_t *env;
+        list_t *history;
+        list_t *alias;
+        char **environ;
+        int env_changed;
+        int status;
 
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
-	int readfd;
-	int histcount;
+        char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+        int cmd_buf_type; /* CMD_type ||, &&, ; */
+        int readfd;
+        int histcount;
 } info_t;
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-	0, 0, 0}
+        0, 0, 0}
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -106,10 +106,11 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-	char *type;
-	int (*func)(info_t *);
+        char *type;
+        int (*func)(info_t *);
 } builtin_table;
 
+/**string functions**/
 int _strlen(char *s);
 int _strcmp(char *s ,char *s1);
 char *start_with(const char *s, const char *s1);
@@ -122,5 +123,19 @@ char *_strncpy(char *dest, char *src, int n);
 char *_strncat(char *dest, char *src, int n);
 char *_strchr(char *s, char c);
 char** strtow(const char* str, const char* delimiter, int* wordCount);
+
+/**memory functions**/
+int bfree(void **ptr);
+char *_memset(char *s, char b, unsigned int n);
+void ffree(char **pp);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+int _strlen(char *s);
+int _strcmp(char *s, char *s1);
+char *start_with(const char *s, const char *s1);
+char *_strcat(char *s, char *s1);
+char *_strcpy(char *s, char *s1);
+char *_strdup(const char *s);
+void _puts(char *str);
+int _putchar(char c);
 
 #endif
