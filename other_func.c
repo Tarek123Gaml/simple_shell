@@ -2,12 +2,12 @@
 
 /**
  * _atoi - convert a string into an integer.
- * @s: the string to use.
+ * @str: the string to use.
  *
  * Return: integer
  */
 
-int _atoi(char *s)
+int _atoi(char *str)
 {
 	int i, d, n, length, f, digit;
 
@@ -18,20 +18,20 @@ int _atoi(char *s)
 	f = 0;
 	digit = 0;
 
-	while (s[length] != '\0')
+	while (str[length] != '\0')
 		length++;
 	while (i < length && f == 0)
 	{
-		if (s[i] == '-')
+		if (str[i] == '-')
 			++d;
-		if (s[i] >= '0' && s[i] <= '9')
+		if (str[i] >= '0' && str[i] <= '9')
 		{
-			digit = s[i] - '0';
+			digit = str[i] - '0';
 			if (d % 2)
 				digit = -digit;
 			n = n * 10 + digit;
 			f = 1;
-			if (s[i + 1] < '0' || s[i + 1] > '9')
+			if (str[i + 1] < '0' || str[i + 1] > '9')
 				break;
 			f = 0;
 		}
@@ -44,42 +44,41 @@ int _atoi(char *s)
 }
 
 /**
-* interactive - returns true when shell is in interactive mode
-* @info: struct address
-*
-* Return: 1 for interactive mode, otherwise 0
-*/
+ * inter_active - returns true when shell is in interactive mode
+ * @info: struct address
+ * Return: 1 for interactive mode, otherwise 0
+ */
 
-int interactive(info_t *info)
+int inter_active(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 
 /**
-* is_delim - checks if a character is a delimeter
-* @c: the character to check
-* @delim: the delimeter string
-* Return: 1 if true, 0 if false
-*/
+ * is_alpha - checks for alphabetic character
+ * @ch: The character to input
+ * Return: 1 if c is alphabetic, 0 otherwise
+ */
 
-int is_delim(char c, char *delim)
+int is_alpha(int ch)
 {
-	while (*delim)
-		if (*delim++ == c)
-			return (1);
-	return (0);
-}
-
-/**
-* _isalpha - checks for alphabetic characters
-* @c: inputed char
-* Return: 1 if  c is alphabetic, otherwise 0
-*/
-
-int _isalpha(int c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >=  'A' && c <= 'Z'))
+	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
 		return (1);
 	else
 		return (0);
+}
+
+/**
+ * is_a_delim - checks where a character is a delimeter
+ * @ch: the character to check
+ * @delim: the delimeter string
+ * Return: 1 if true, 0 if false
+ */
+
+int is_a_delim(char ch, char *delim)
+{
+	while (*delim)
+		if (*delim++ == ch)
+			return (1);
+	return (0);
 }
