@@ -169,5 +169,15 @@ int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
+/**Umfeld functions**/
+
+int _mon_new_var(info_t *info);
+char *get_var_env(info_t *info, const char *Nom);
+int Mon_envir(info_t *info;
+int envir_list(info_t *info);
+int unset_env_var(info_t *info);
+int delete_var(info_t *info, char *var);
+int novel_env(info_t *info, char *var, char *value);
+char **copy_envir(info_t *info);
 
 #endif
