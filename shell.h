@@ -285,6 +285,17 @@ int unset_alias(info_t *info, char *str);
 int histo_list(info_t *info);
 int _myhistory(info_t *info);
 
+/**weg**/
+
+char *trouve_way(info_t *info, char *pathstr, char *cmd);
+char *find_path(info_t *info, char *pathstr, char *cmd);
+
+char *duplic_carac(char *pathstr, int start, int stop);
+char *dup_chars(char *pathstr, int start, int stop);
+
+int exe_cmd(info_t *info, char *path);
+int is_cmd(info_t *info, char *path);
+
 
 
 #endif
