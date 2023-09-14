@@ -111,73 +111,152 @@ typedef struct builtin
 } builtin_table;
 
 /**string functions**/
+
 int _strlen(char *s);
+
 int _strcmp(char *s ,char *s1);
+
 char *start_with(const char *s, const char *s1);
+char *starts_with(const char *haystack, const char *needle);
+
 char *_strcat(char *s, char *s1);
+char *_strcat(char *dest, char *src);
+
 char *_strcpy(char *s, char *s1);
+char *_strcpy(char *dest, char *src);
+
 char *_strdup(const char *s);
+char *_strdup(const char *str);
+
 void _puts(char *str);
+
 int _putchar(char c);
+
 char *_strncpy(char *dest, char *src, int n);
+
 char *_strncat(char *dest, char *src, int n);
+
 char *_strchr(char *s, char c);
+
 char** strtow(const char* str, const char* delimiter, int* wordCount);
+char **strtow(char *str, char *d);
+char **strtow2(char *str, char d);
 
 /**memory functions**/
+
 int bfree(void **ptr);
+
 char *_memset(char *s, char b, unsigned int n);
+
 void ffree(char **pp);
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-int _strlen(char *s);
-int _strcmp(char *s, char *s1);
-char *start_with(const char *s, const char *s1);
-char *_strcat(char *s, char *s1);
-char *_strcpy(char *s, char *s1);
-char *_strdup(const char *s);
-void _puts(char *str);
-int _putchar(char c);
 
 /**other functions**/
 
 int _atoi(char *str);
+
 int is_alpha(int ch);
+int _isalpha(int c);
+
 int is_a_delim(char ch, char *delim);
+int is_delim(char c, char *delim);
+
 int inter_active(info_t *info);
+int interactive(info_t *info);
+
 char change_num(long int num, int base, int flage);
+char *convert_number(long int num, int base, int flags);
+
 int err_atoi(char *str);
+int _erratoi(char *s);
+
 void print_error(info_t *info, char *erstr);
+
 int print_dec(int input, int fdis);
+int print_d(int input, int fd);
+
 void delete_comments(char *buffer);
+void remove_comments(char *buf);
 
 /**list functions**/
 
 list_t *add_node_str(list_t **head, const char *str, int num);
+list_t *add_node(list_t **head, const char *str, int num);
+
 list_t *add_node_end(list_t **head, const char *str, int num);
+list_t *add_node_end(list_t **head, const char *str, int num);
+
 size_t print_list_str(const list_t *h);
+
 int delete_xnode(list_t **head, unsigned int index);
+int delete_node_at_index(list_t **head, unsigned int index);
+
 void free_list(list_t **head_ptr);
+
 size_t list_len(const list_t *f);
+
 char **list_to_strings(list_t *head);
+
 size_t print_list(const list_t *h);
+
 list_t *node_starts_with(list_t *node, char *prefix, char c);
+
 ssize_t get_node_index(list_t *head, list_t *node);
 
 /**functions path**/
 
 int is_cmd(info_t *, char *);
+
 char *dup_chars(char *, int, int);
+
 char *find_path(info_t *, char *, char *);
 
 /**Umfeld functions**/
 
 int _mon_new_var(info_t *info);
+int _mysetenv(info_t *info);
+
 char *get_var_env(info_t *info, const char *Nom);
+char *_getenv(info_t *info, const char *name);
+
 int Mon_envir(info_t *info;
+int _myenv(info_t *info);
+
 int envir_list(info_t *info);
+int populate_env_list(info_t *info);
+
 int unset_env_var(info_t *info);
+int _myunsetenv(info_t *info);
+
 int delete_var(info_t *info, char *var);
+int _unsetenv(info_t *info, char *var);
+
 int novel_env(info_t *info, char *var, char *value);
+int _setenv(info_t *info, char *var, char *value);
+
 char **copy_envir(info_t *info);
+char **get_environ(info_t *info);
+
+/**history functions**/
+
+int renumber_history(info_t *info);
+
+int build_history_list(info_t *info, char *buf, int linecount);
+
+int read_history(info_t *info);
+
+int write_history(info_t *info);
+
+char *get_history(info_t *info);
+char *get_history_file(info_t *info);
+
+/**info functions**/
+
+void clear_info(info_t *info);
+
+void set_info(info_t *info, char **av);
+
+void free_info(info_t *info, int all);
 
 #endif
