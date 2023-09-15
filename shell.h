@@ -296,6 +296,21 @@ char *dup_chars(char *pathstr, int start, int stop);
 int exe_cmd(info_t *info, char *path);
 int is_cmd(info_t *info, char *path);
 
+/**/
+
+int find_chain(info_t *info, char *buf, size_t *p);
+int is_chain(info_t *info, char *buf, size_t *p);
+
+void check_status(info_t *info, char *buf, size_t *p, size_t i, size_t len);
+void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len);
+
+int show_alias(info_t *info);
+int replace_alias(info_t *info);
+
+int vals_vars(info_t *info);
+int replace_vars(info_t *info);
+
+int replace_string(char **old, char *new);
 
 
 #endif
