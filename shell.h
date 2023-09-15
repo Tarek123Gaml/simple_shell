@@ -327,4 +327,9 @@ int _getline(info_t *info, char **ptr, size_t *length);
 
 void sigintHandler(__attribute__((unused))int sig_num);
 
+/* hshs.c */
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
 #endif
