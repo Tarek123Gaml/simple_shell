@@ -296,7 +296,7 @@ char *dup_chars(char *pathstr, int start, int stop);
 int exe_cmd(info_t *info, char *path);
 int is_cmd(info_t *info, char *path);
 
-/**/
+/**test file**/
 
 int find_chain(info_t *info, char *buf, size_t *p);
 int is_chain(info_t *info, char *buf, size_t *p);
@@ -312,5 +312,19 @@ int replace_vars(info_t *info);
 
 int replace_string(char **old, char *new);
 
+/**get_line file**/
+
+ssize_t take_buf(info_t *info, char **buf, size_t *len);
+ssize_t input_buf(info_t *info, char **buf, size_t *len);
+
+ssize_t take_input(info_t *info);
+ssize_t get_input(info_t *info);
+
+ssize_t read_buf(info_t *info, char *buf, size_t *i);
+
+int _get_line(info_t *info, char **ptr, size_t *length);
+int _getline(info_t *info, char **ptr, size_t *length);
+
+void sigintHandler(__attribute__((unused))int sig_num);
 
 #endif
