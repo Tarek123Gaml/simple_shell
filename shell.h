@@ -332,4 +332,19 @@ int hsh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
+
+/* errors */
+
+void eput_str(char *str);
+void _eputs(char *str);
+
+int _eput_char(char ch);
+int _eputchar(char c);
+
+int _put_fdis(char ch, int fdis);
+int _putfd(char c, int fd);
+
+int _put_str_fdis(char *str, int fd);
+int _putsfd(char *str, int fd);
+
 #endif
