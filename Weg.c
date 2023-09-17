@@ -57,7 +57,7 @@ char *trouve_way(info_t *info, char *pathstr, char *cmd)
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+	if ((_strlen(cmd) > 2) && start_with(cmd, "./"))
 	{
 		if (exe_cmd(info, cmd))
 			return (cmd);
