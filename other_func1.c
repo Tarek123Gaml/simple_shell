@@ -9,13 +9,13 @@
  */
 void print_Error(info_t *info, char *erstr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
+	eput_str(info->fname);
+	eput_str(": ");
 	print_dec(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(erstr);
+	eput_str(": ");
+	eput_str(info->argv[0]);
+	eput_str(": ");
+	eput_str(erstr);
 }
 
 /**
@@ -86,7 +86,7 @@ int print_dec(int input, int fdis)
 	unsigned int _abs_, current;
 
 	if (fdis == STDERR_FILENO)
-		__putchar = _eputchar;
+		__putchar = eput_char;
 	if (input < 0)
 	{
 		_abs_ = -input;
