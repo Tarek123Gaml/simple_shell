@@ -9,7 +9,7 @@ int mon_new_var(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		_eputs("The number of arguements is incorrect\n");
+		_eput_str("The number of arguements is incorrect\n");
 		return (1);
 	}
 	if (mon_new_var(info, info->argv[1], info->argv[2]))
@@ -31,7 +31,7 @@ char *get_var_env(info_t *info, const char *Nom)
 
 	while (node)
 	{
-		ptr = starts_with(node->str, Nom);
+		ptr = start_with(node->str, Nom);
 		if (ptr && *p)
 			return (ptr);
 		node = node->next;
@@ -77,7 +77,7 @@ int unset_env_var(info_t *info)
 
 	if (info->argc == 1)
 	{
-		_eputs("Too few arguements.\n");
+		_eput_str("Too few arguements.\n");
 		return (1);
 	}
 	for (i = 1; i <= info->argc; i++)

@@ -25,7 +25,7 @@ int novel_env(info_t *info, char *var, char *value)
 	node = info->env;
 	while (node)
 	{
-		p = starts_with(node->str, var);
+		p = start_with(node->str, var);
 		if (p && *p == '=')
 		{
 			free(node->str);
@@ -60,10 +60,10 @@ int delete_var(info_t *info, char *var)
 
 	while (node)
 	{
-		p = starts_with(node->str, var);
+		p = start_with(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_changed = delete_node_at_index(&(info->env), i);
+			info->env_changed = delete_xnode(&(info->env), i);
 			i = 0;
 			node = info->env;
 			continue;
