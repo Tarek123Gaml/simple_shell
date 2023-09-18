@@ -20,7 +20,7 @@ ssize_t take_buf(info_t *info, char **buf, size_t *len)
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
 #if USE_GETLINE
-		r = getline(buf, &len_p, stdin);
+		r = _get_line(buf, &len_p, stdin);
 #else
 		r = _get_line(info, buf, &len_p);
 #endif
