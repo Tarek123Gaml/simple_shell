@@ -123,7 +123,9 @@ int _putchar(char c);
 char *_strncpy(char *dest, char *src, int n);
 char *_strncat(char *dest, char *src, int n);
 char *_strchr(char *s, char c);
-char **strtow(const char *str, const char *delimiter, int *wordCount);
+char **strtowTow(char *str, char dilm);
+char **strtowOne(char *str, char *dilm);
+
 /**memory functions**/
 
 int bfree(void **);

@@ -1,56 +1,6 @@
 #include "shell.h"
 
 /**
- * **strtow -  splits a string into an array of words based on a delimiter
- * @str: The input string that you want to split into words.
- * @delimiter: The delimiter character used to split the string.
- * @wordCount: A pointer to an integer where the function will store the count
- * Return: the splited words
- */
-
-char **strtow(const char *str, const char *delimiter, int *wordCount)
-{
-	char **words = NULL;
-	int count = 0;
-
-	if (str == NULL)
-	{
-		*wordCount = 0;
-		return (NULL);
-	}
-	char *strCopy = strdup(str);
-
-	if (strCopy == NULL)
-	{
-		*wordCount = 0;
-		return (NULL);
-	}
-	char *token = strtok(strCopy, delimiter);
-
-	while (token != NULL)
-	{
-		words = (char **)realloc(words, (count + 1) * sizeof(char *));
-		words[count] = strdup(token);
-		if (words[count] == NULL)
-		{
-			for (int i = 0; i < count; i++)
-			{
-				free(words[i]);
-			}
-		free(words);
-		free(strCopy);
-		*wordCount = 0;
-		return (NULL);
-		}
-	count++;
-	token = strtok(NULL, delimiter);
-	}
-	free(strCopy);
-	*wordCount = count;
-	return (words);
-}
-
-/**
  * _strncat - is a function that concatenates two strings.
  * @dest: pointer to the string to which the char willbe appended
  * @src:pointer to the string from char will be concatenated
@@ -81,3 +31,97 @@ char *_strncat(char *dest, char *src, int n)
 	return (dest);
 }
 
+#include "shell.h"
+
+/**
+ * **strtowOne - it splits a string into words. Repeat delimiters are ignored
+ * @str: the input string
+ * @dilm: the delimeter string
+ * Return: a pointer to an array of strings, or NULL on failure
+ */
+
+char **strtowOne(char *str, char *dilm)
+{
+	int i, j, k, m, numwords = 0;
+	char **s;
+
+	if (str == NULL || str[0] == 0)
+		return (NULL);
+	if (!dilm)
+		dilm = " ";
+	for (i = 0; str[i] != '\0'; i++)
+		if (!is_a_delim(str[i], dilm) && (is_a_delim(str[i + 1], dilm) || !str[i + 1]))
+			numwords++;
+
+	if (numwords == 0)
+		return (NULL);
+	s = malloc((1 + numwords) * sizeof(char *));
+	if (!s)
+		return (NULL);
+	for (i = 0, j = 0; j < numwords; j++)
+	{
+		while (is_delim(str[i], dilm))
+			i++;
+		k = 0;
+		while (!is_a_delim(str[i + k], dilm) && str[i + k])
+			k++;
+		s[j] = malloc((k + 1) * sizeof(char));
+		if (!s[j])
+		{
+			for (k = 0; k < j; k++)
+				free(s[k]);
+			free(s);
+			return (NULL);
+		}
+		for (m = 0; m < k; m++)
+			s[j][m] = str[i++];
+		s[j][m] = 0;
+	}
+	s[j] = NULL;
+	return (s);
+}
+
+/**
+ * **strtowTow - splits a string into words
+ * @str: the input string
+ * @dilm: the delimeter
+ * Return: a pointer to an array of strings, or NULL on failure
+ */
+char **strtowTow(char *str, char dilm)
+{
+	int i, j, k, m, numwords = 0;
+	char **s;
+
+	if (str == NULL || str[0] == 0)
+		return (NULL);
+	for (i = 0; str[i] != '\0'; i++)
+		if ((str[i] != dilm && str[i + 1] == dilm) ||
+		    (str[i] != dilm && !str[i + 1]) || str[i + 1] == d)
+			numwords++;
+	if (numwords == 0)
+		return (NULL);
+	s = malloc((1 + numwords) * sizeof(char *));
+	if (!s)
+		return (NULL);
+	for (i = 0, j = 0; j < numwords; j++)
+	{
+		while (str[i] == dilm && str[i] != dilm)
+			i++;
+		k = 0;
+		while (str[i + k] != dilm && str[i + k] && str[i + k] != dilm)
+			k++;
+		s[j] = malloc((k + 1) * sizeof(char));
+		if (!s[j])
+		{
+			for (k = 0; k < j; k++)
+				free(s[k]);
+			free(s);
+			return (NULL);
+		}
+		for (m = 0; m < k; m++)
+			s[j][m] = str[i++];
+		s[j][m] = 0;
+	}
+	s[j] = NULL;
+	return (s);
+}
