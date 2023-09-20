@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * **strtow: splits a string into an array of words based on a delimiter
+ * **strtow -  splits a string into an array of words based on a delimiter
  * @str: The input string that you want to split into words.
  * @delimiter: The delimiter character used to split the string.
  * @wordCount: A pointer to an integer where the function will store the count
