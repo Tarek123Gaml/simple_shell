@@ -139,7 +139,7 @@ char *_strncat(char *dest, char *src, int n);
 char *_strchr(char *s, char c);
 
 char **strtow(const char *str, const char *delimiter, int *wordCount);
-char **strtow(char *str, char *d);
+/*char **strtow(char *str, char *d);*/
 char **strtow2(char *str, char d);
 
 /**memory functions**/
@@ -165,7 +165,7 @@ int is_delim(char c, char *delim);
 int inter_active(info_t *info);
 int interactive(info_t *info);
 
-char change_num(long int num, int base, int flage);
+char *change_num(long int num, int base, int flage);
 char *convert_number(long int num, int base, int flags);
 
 int err_atoi(char *str);
@@ -220,7 +220,7 @@ int _mysetenv(info_t *info);
 char *get_var_env(info_t *info, const char *Nom);
 char *_getenv(info_t *info, const char *name);
 
-int Mon_envir(info_t *info;
+int Mon_envir(info_t *info);
 int _myenv(info_t *info);
 
 int envir_list(info_t *info);

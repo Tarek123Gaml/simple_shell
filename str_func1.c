@@ -17,7 +17,7 @@ char *_strcpy(char *s, char *s1)
 		return (s);
 	while (s1[i])
 	{
-		s[i] == s1[i];
+		s[i] = s1[i];
 		i++;
 	}
 	s[i] = 0;
