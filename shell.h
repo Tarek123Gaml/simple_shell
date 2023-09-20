@@ -126,9 +126,9 @@ char *_strchr(char *s, char c);
 char **strtow(const char *str, const char *delimiter, int *wordCount);
 /**memory functions**/
 
-int bfree(void **ptr);
+int bfree(void **);
 char *_memset(char *s, char b, unsigned int n);
-void _free(char **pp);
+void _free(char **);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 /**other functions**/

@@ -34,7 +34,7 @@ int Sh_exit(info_t *info)
  */
 int pro_change(info_t *info)
 {
-	char **arg_array;
+	char **arg_arr;
 
 	arg_arr = info->argv;
 	_puts("help call works. Function isn't implemented yet \n");
