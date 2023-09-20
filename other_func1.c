@@ -86,7 +86,7 @@ int print_dec(int input, int fdis)
 	unsigned int _abs_, current;
 
 	if (fdis == STDERR_FILENO)
-		__putchar = eput_char;
+		__putchar = _eput_char;
 	if (input < 0)
 	{
 		_abs_ = -input;

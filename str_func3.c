@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * strtow: splits a string into an array of words based on a delimiter
+ * **strtow -  splits a string into an array of words based on a delimiter
  * @str: The input string that you want to split into words.
  * @delimiter: The delimiter character used to split the string.
  * @wordCount: A pointer to an integer where the function will store the count
  * Return: the splited words
  */
 
-char **strtow(const char *str, const cha *delimiter, int *wordCount)
+char **strtow(const char *str, const char *delimiter, int *wordCount)
 {
 	char **words = NULL;
 	int count = 0;
@@ -18,10 +18,9 @@ char **strtow(const char *str, const cha *delimiter, int *wordCount)
 		*wordCount = 0;
 		return (NULL);
 	}
-
 	char *strCopy = strdup(str);
 
-        if (strCopy == NULL)
+	if (strCopy == NULL)
 	{
 		*wordCount = 0;
 		return (NULL);
@@ -32,7 +31,6 @@ char **strtow(const char *str, const cha *delimiter, int *wordCount)
 	{
 		words = (char **)realloc(words, (count + 1) * sizeof(char *));
 		words[count] = strdup(token);
-
 		if (words[count] == NULL)
 		{
 			for (int i = 0; i < count; i++)
@@ -44,7 +42,6 @@ char **strtow(const char *str, const cha *delimiter, int *wordCount)
 		*wordCount = 0;
 		return (NULL);
 		}
-
 	count++;
 	token = strtok(NULL, delimiter);
 	}

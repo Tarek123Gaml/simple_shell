@@ -56,7 +56,7 @@ int delete_var(info_t *info, char *var)
 	char *p;
 
 	if (!node || !var)
-	2	return (0);
+		return (0);
 
 	while (node)
 	{

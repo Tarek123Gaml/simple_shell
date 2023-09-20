@@ -45,9 +45,9 @@ extern char **environ;
  */
 typedef struct liststr
 {
-        int num;
-        char *str;
-        struct liststr *next;
+	int num;
+	char *str;
+	struct liststr *next;
 } list_t;
 
 /**
@@ -74,30 +74,30 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-        char *arg;
-        char **argv;
-        char *path;
-        int argc;
-        unsigned int line_count;
-        int err_num;
-        int linecount_flag;
-        char *fname;
-        list_t *env;
-        list_t *history;
-        list_t *alias;
-        char **environ;
-        int env_changed;
-        int status;
+	char *arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
 
-        char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-        int cmd_buf_type; /* CMD_type ||, &&, ; */
-        int readfd;
-        int histcount;
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int readfd;
+	int histcount;
 } info_t;
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-        0, 0, 0}
+	0, 0, 0}
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -106,8 +106,8 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-        char *type;
-        int (*func)(info_t *);
+	char *type;
+	int (*func)(info_t *);
 } builtin_table;
 
 /**string functions**/
@@ -123,9 +123,7 @@ int _putchar(char c);
 char *_strncpy(char *dest, char *src, int n);
 char *_strncat(char *dest, char *src, int n);
 char *_strchr(char *s, char c);
-char **strtow(const char* str, const char* delimiter, int* wordCount);
-char **strtow2(char *str, char d);
-
+char **strtow(const char *str, const char *delimiter, int *wordCount);
 /**memory functions**/
 
 int bfree(void **ptr);
@@ -139,7 +137,7 @@ int _atoi(char *str);
 int is_alpha(int ch);
 int is_a_delim(char ch, char *delim);
 int inter_active(info_t *info);
-char change_num(long int num, int base, int flage);
+char *change_num(long int num, int base, int flage);
 int err_atoi(char *str);
 void print_Error(info_t *info, char *erstr);
 int print_dec(int input, int fdis);
