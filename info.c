@@ -24,7 +24,7 @@ void set_inf(info_t *info, char **av)
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = strtow(info->arg, " \t");
+		info->argv = strtowOne(info->arg, " \t");
 		if (!info->argv)
 		{
 
@@ -35,7 +35,7 @@ void set_inf(info_t *info, char **av)
 				info->argv[1] = NULL;
 			}
 		}
-		for (x = 0; info->argv && info->argv[x]; i++)
+		for (x = 0; info->argv && info->argv[x]; x++)
 			;
 		info->argc = x;
 
