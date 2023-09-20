@@ -60,7 +60,7 @@ int find_builtin(info_t *info)
 		{"env", Mon_envir},
 		{"help", pro_change},
 		{"history", histo_list},
-		{"setenv", _mon_new_var},
+		{"setenv", mon_new_var},
 		{"unsetenv", unset_env_var},
 		{"cd", curnt_dir},
 		{"alias", pseudy},
@@ -100,7 +100,7 @@ void find_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, get_var_env(info, "PATH="), info->argv[0]);
+	path = trouve_way(info, get_var_env(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -138,7 +138,7 @@ void fork_cmd(info_t *info)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_environ(info)) == -1)
+		if (execve(info->path, info->argv, copy_envir(info)) == -1)
 		{
 			free_info(info, 1);
 			if (errno == EACCES)
