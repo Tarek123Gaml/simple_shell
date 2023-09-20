@@ -45,9 +45,9 @@ extern char **environ;
  */
 typedef struct liststr
 {
-        int num;
-        char *str;
-        struct liststr *next;
+	int num;
+	char *str;
+	struct liststr *next;
 } list_t;
 
 /**
@@ -74,30 +74,30 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-        char *arg;
-        char **argv;
-        char *path;
-        int argc;
-        unsigned int line_count;
-        int err_num;
-        int linecount_flag;
-        char *fname;
-        list_t *env;
-        list_t *history;
-        list_t *alias;
-        char **environ;
-        int env_changed;
-        int status;
+	char *arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
 
-        char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-        int cmd_buf_type; /* CMD_type ||, &&, ; */
-        int readfd;
-        int histcount;
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int readfd;
+	int histcount;
 } info_t;
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-        0, 0, 0}
+	0, 0, 0}
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -106,15 +106,15 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-        char *type;
-        int (*func)(info_t *);
+	char *type;
+	int (*func)(info_t *);
 } builtin_table;
 
 /**string functions**/
 
 int _strlen(char *s);
 
-int _strcmp(char *s ,char *s1);
+int _strcmp(char *s, char *s1);
 
 char *start_with(const char *s, const char *s1);
 char *starts_with(const char *haystack, const char *needle);
@@ -138,7 +138,7 @@ char *_strncat(char *dest, char *src, int n);
 
 char *_strchr(char *s, char c);
 
-char** strtow(const char* str, const char* delimiter, int* wordCount);
+char **strtow(const char *str, const char *delimiter, int *wordCount);
 char **strtow(char *str, char *d);
 char **strtow2(char *str, char d);
 
