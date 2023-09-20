@@ -113,7 +113,7 @@ typedef struct builtin
 /**string functions**/
 
 int _strlen(char *s);
-int _strcmp(char *s ,char *s1);
+int _strcmp(char *s, char *s1);
 char *start_with(const char *s, const char *s1);
 char *_strcat(char *s, char *s1);
 char *_strcpy(char *s, char *s1);
