@@ -13,11 +13,11 @@ void clear_info(info_t *info)
 }
 
 /**
- * set_inf - set info_t struct
+ * set_info - set info_t struct
  * @info: struct address
  * @av: argument vector
  */
-void set_inf(info_t *info, char **av)
+void set_info(info_t *info, char **av)
 {
 	int x = 0;
 

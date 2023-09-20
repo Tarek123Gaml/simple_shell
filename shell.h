@@ -160,7 +160,7 @@ ssize_t get_node_index(list_t *head, list_t *node);
 
 /**Umfeld functions**/
 
-int _mon_new_var(info_t *info);
+int mon_new_var(info_t *info);
 char *get_var_env(info_t *info, const char *Nom);
 int Mon_envir(info_t *info);
 int envir_list(info_t *info);
