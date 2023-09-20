@@ -60,7 +60,7 @@ char **strtowOne(char *str, char *dilm)
 		return (NULL);
 	for (i = 0, j = 0; j < numwords; j++)
 	{
-		while (is_delim(str[i], dilm))
+		while (is_a_delim(str[i], dilm))
 			i++;
 		k = 0;
 		while (!is_a_delim(str[i + k], dilm) && str[i + k])
@@ -96,7 +96,7 @@ char **strtowTow(char *str, char dilm)
 		return (NULL);
 	for (i = 0; str[i] != '\0'; i++)
 		if ((str[i] != dilm && str[i + 1] == dilm) ||
-		    (str[i] != dilm && !str[i + 1]) || str[i + 1] == d)
+		    (str[i] != dilm && !str[i + 1]) || str[i + 1] == dilm)
 			numwords++;
 	if (numwords == 0)
 		return (NULL);
