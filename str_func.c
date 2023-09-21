@@ -41,7 +41,7 @@ int _strcmp(char *s, char *s1)
 	if (*s == *s1)
 		return (0);
 	else
-		return (*s > *s1 ? 1 : -1);
+		return (*s < *s1 ? -1 : 1);
 }
 
 /**

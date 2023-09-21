@@ -73,12 +73,15 @@ int envir_list(info_t *info)
  */
 int unset_env_var(info_t *info)
 {
-	if (info->argc != 3)
+	int i;
+
+	if (info->argc == 1)
 	{
-		eput_str("Incorrect number of arguements\n");
+		eput_str("Too few arguements.\n");
 		return (1);
 	}
-	if (novel_env(info, info->argv[1], info->argv[2]))
-		return (0);
-	return (1);
+	for (i = 1; i <= info->argc; i++)
+		delete_var(info, info->argv[i]);
+
+	return (0);
 }

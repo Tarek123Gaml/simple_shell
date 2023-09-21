@@ -9,38 +9,30 @@
 
 int _atoi(char *str)
 {
-	int i, d, n, length, f, digit;
+	int i, sign = 1, flag = 0, output;
+	unsigned int result = 0;
 
-	n = 0;
-	d = 0;
-	i = 0;
-	length = 0;
-	f = 0;
-	digit = 0;
-
-	while (str[length] != '\0')
-		length++;
-	while (i < length && f == 0)
+	for (i = 0;  str[i] != '\0' && flag != 2; i++)
 	{
 		if (str[i] == '-')
-			++d;
+			sign *= -1;
+
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			digit = str[i] - '0';
-			if (d % 2)
-				digit = -digit;
-			n = n * 10 + digit;
-			f = 1;
-			if (str[i + 1] < '0' || str[i + 1] > '9')
-				break;
-			f = 0;
+			flag = 1;
+			result *= 10;
+			result += (str[i] - '0');
 		}
-		i++;
+		else if (flag == 1)
+			flag = 2;
 	}
-	if (f == 0)
-		return (0);
 
-	return (n);
+	if (sign == -1)
+		output = -result;
+	else
+		output = result;
+
+	return (output);
 }
 
 /**
